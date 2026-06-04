@@ -68,6 +68,12 @@ export const applyItemEffect = async (userId: number, effect: string): Promise<v
         data: { autoClickInterval: Math.max((user.autoClickInterval || 2000) / 3, 50) },
       });
       break;
+    case 'Auto Click Power +':
+      await prisma.user.update({
+        where: { userid: userId },
+        data: { autoClickPower: (user.autoClickPower || 0) + 1, autoClickPurchased: true },
+      });
+      break;
 
     // Critical Hit Powerups
     case 'Critical Hit +':

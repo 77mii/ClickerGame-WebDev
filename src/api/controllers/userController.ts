@@ -98,3 +98,24 @@ export const deleteUser = async (req: Request, res: Response): Promise<void> => 
     res.status(500).json({ error: 'Failed to delete user' });
   }
 };
+
+export const updateSelectedImage = async (req: Request, res: Response): Promise<void> => {
+  const { userId, imageName } = req.body;
+  const validImages = ['capybara', 'react', 'pizza', 'rocket', 'star', 'diamond'];
+  
+  try {
+    if (!validImages.includes(imageName)) {
+      res.status(400).json({ error: 'Invalid image selection' });
+      return;
+    }
+    
+    await prisma.user.update({
+      where: { userid: Number(userId) },
+      data: { selectedImage: imageName },
+    });
+    res.json({ message: 'Image preference updated successfully', selectedImage: imageName });
+  } catch (error) {
+    console.error('Error updating image preference:', error);
+    res.status(500).json({ error: 'Failed to update image preference' });
+  }
+};

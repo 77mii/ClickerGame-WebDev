@@ -15,6 +15,7 @@ const shopItems = [
   
   // Auto Click Powerups
   { itemname: 'Auto Click', price: 100, effect: 'Auto Click' },
+  { itemname: 'Auto Click Power +', price: 120, effect: 'Auto Click Power +' },
   { itemname: 'Auto Click SPD +', price: 250, effect: 'Auto Click SPD +' },
   { itemname: 'Lightning Speed', price: 600, effect: 'Auto Click SPD ++' },
   

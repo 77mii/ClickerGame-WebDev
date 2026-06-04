@@ -17,7 +17,7 @@
 
 
 import { Router } from 'express';
-import { updateScore, getUser, registerUser, getAllUsers, loginUser, deleteUser } from '../controllers/userController';
+import { updateScore, getUser, registerUser, getAllUsers, loginUser, deleteUser, updateSelectedImage } from '../controllers/userController';
 
 const router = Router();
 
@@ -39,5 +39,8 @@ router.post('/login', loginUser);
 
 //Delete user
 router.delete('/user/:id', deleteUser);
+
+// Update selected clicker image
+router.post('/update-image', updateSelectedImage);
 
 export default router;

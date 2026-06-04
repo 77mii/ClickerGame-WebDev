@@ -111,16 +111,18 @@ const Shop: React.FC<ShopProps> = ({ onPurchase, userScore, userData }) => {
         {filteredItems.map((item) => (
           <div
             key={item.id}
-            className={`p-4 rounded-lg border-2 transition-all ${
+            title={`Effect: ${item.effect}`}
+            className={`p-4 rounded-lg border-2 transition-all overflow-hidden ${
               isItemAffordable(item.price)
                 ? 'bg-blue-800 border-blue-600 hover:border-yellow-400'
                 : 'bg-blue-900 border-blue-700 opacity-60'
             }`}
+            style={{ minHeight: 120 }}
           >
             <div className="flex items-start justify-between mb-2">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">{getItemIcon(item.effect)}</span>
-                <h3 className="font-bold text-white text-sm">{item.itemname}</h3>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl flex-shrink-0">{getItemIcon(item.effect)}</span>
+                <h3 className="font-bold text-white text-sm break-words whitespace-normal leading-tight flex-1">{item.itemname}</h3>
               </div>
             </div>
             

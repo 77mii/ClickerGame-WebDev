@@ -27,6 +27,8 @@ comboMultiplier Float @default(1)
 energyBoosts Int @default(0)
 boostActive Boolean @default(false)
 boostEndTime DateTime?
+selectedImage String @default("capybara")
+autoClickPower Int @default(0)
 }
 
 model Item {
