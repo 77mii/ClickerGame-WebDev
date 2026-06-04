@@ -21,7 +21,12 @@ items    Item[]
 userScore Int    @default(0)
 pointsPerClick Int @default(1)
 autoClickPurchased Boolean @default(false)
- autoClickInterval Int     @default(2000)
+autoClickInterval Int     @default(2000)
+criticalHitChance Float @default(0)
+comboMultiplier Float @default(1)
+energyBoosts Int @default(0)
+boostActive Boolean @default(false)
+boostEndTime DateTime?
 }
 
 model Item {
