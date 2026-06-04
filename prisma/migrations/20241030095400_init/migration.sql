@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "User" ADD COLUMN     "autoClickInterval" INTEGER NOT NULL DEFAULT 2000,
+ADD COLUMN     "autoClickPurchased" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "pointsPerClick" INTEGER NOT NULL DEFAULT 1;

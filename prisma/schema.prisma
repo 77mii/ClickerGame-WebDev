@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+userid        Int     @default(autoincrement()) @id
+username  String  @unique
+password  String    
+items    Item[] 
+userScore Int    @default(0)
+pointsPerClick Int @default(1)
+autoClickPurchased Boolean @default(false)
+ autoClickInterval Int     @default(2000)
+}
+
+model Item {
+
+itemid        Int     @default(autoincrement()) @id @unique
+itemname      String  
+price     Int
+effect    String
+owner     User?   @relation(fields: [ownerId], references: [userid])
+ownerId   Int?
+
+ @@unique([itemname, ownerId]) // 1 user multiple instances of the same item but each instance is unique to that user.
+}
+//item is used for tracking who has what item
+
+model ShopItem {
+  id        Int     @default(autoincrement()) @id
+  itemname  String  @unique
+  price     Int
+  effect    String
+}
